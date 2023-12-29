@@ -9,8 +9,7 @@
     "prepublishOnly": "npm run package"
   },
   "exports": {
-    ".": {
-    }
+    ".": {}
   },
   "files": [
     "dist",
@@ -21,22 +20,21 @@
     "svelte": "^4.0.0"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "^3.0.0",
-    "@sveltejs/kit": "^2.0.0",
-    "@sveltejs/package": "^2.0.0",
-    "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "@sveltejs/adapter-auto": "^3.0.1",
+    "@sveltejs/kit": "^2.0.6",
+    "@sveltejs/package": "^2.2.5",
+    "@sveltejs/vite-plugin-svelte": "^3.0.1",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.32",
     "postcss-load-config": "^5.0.2",
-    "publint": "^0.1.9",
-    "svelte": "^4.2.7",
-    "tailwindcss": "^3.3.6",
-    "tslib": "^2.4.1",
-    "typescript": "^5.3.2",
-    "vite": "^5.0.3"
+    "publint": "^0.1.16",
+    "svelte": "^4.2.8",
+    "tailwindcss": "^3.4.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10"
   },
   "svelte": "./dist/index.js",
-  
   "type": "module",
   "dependencies": {
     "mongodb": "^6.3.0",
