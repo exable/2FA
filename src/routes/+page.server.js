@@ -2,7 +2,7 @@ import {detectEncoding, encrypt, getUser, timestampOfNextCode} from "$lib/utils.
 import {redirect, fail} from '@sveltejs/kit'
 import {PRIVATE_USERNAME, PRIVATE_PASSWORD,SECRET } from "$env/static/private"
 import { accounts } from "$lib/account.js"
-import { totp } from 'speakeasy'
+import speakeasy from 'speakeasy'
 
 /** @type {import('./$types').Actions} */
 export const actions = {
@@ -52,7 +52,7 @@ export const actions = {
 
         secret = secret.split(" ").join("").trim();
 
-        const code = totp({secret, encoding: detectEncoding(secret)});
+        const code = speakeasy.totp({secret, encoding: detectEncoding(secret)});
         if(!code) {
             return fail(400, {
                 error: 'Something went wrong.'
