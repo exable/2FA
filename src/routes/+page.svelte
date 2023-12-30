@@ -20,7 +20,7 @@
 <div class="w-full h-max flex flex-wrap gap-2 py-5">
 {#if accounts}
 {#each accounts as account}
-    <Account id={account._id} label={account.label} code={account.code} notes={account.notes} 
+    <Account id={account._id} name={account.name} code={account.code} notes={account.notes} 
         on:invalidate={()=>fetchAccounts()} />
 {/each}
 {/if}

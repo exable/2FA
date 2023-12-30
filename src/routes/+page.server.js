@@ -35,13 +35,13 @@ export const actions = {
 
     create: async ({request, cookies}) => {
         const data = await request.formData();
-        let label = data.get('label');
+        let name = data.get('name');
         let secret = data.get('secret');
         let notes = data.get('notes');
         
-        if (!label || !secret) {
+        if (!name || !secret) {
             return fail(400, {
-                error: 'Please enter a label and secret'
+                error: 'Please enter a name and secret'
             });
         }
 
@@ -63,7 +63,7 @@ export const actions = {
 
 
         const account = new accounts({
-            label: label,
+            name: name,
             secret: secret,
             notes: notes
         })
@@ -71,7 +71,7 @@ export const actions = {
         await account.save().catch(err => console.log("Error while saving new account."));
 
         return {
-            label,
+            name,
             code: {code, expires: time},
             notes,
         }
@@ -99,7 +99,7 @@ export const actions = {
     edit: async ({request, cookies}) => {
         const data = await request.formData();
         const id = data.get("id");
-        let label = data.get("label");
+        let name = data.get("name");
         let secret = data.get("secret");
         let notes = data.get("notes");
         
@@ -118,14 +118,14 @@ export const actions = {
             }
         }
 
-        const account = await accounts.findOneAndUpdate({_id: id}, {label, secret, notes});
+        const account = await accounts.findOneAndUpdate({_id: id}, {name, secret, notes});
     
         if (!account) return fail(500, {
             error: 'Something went wrong.'
         });
 
         return {
-            label,
+            name,
             notes,
         }
     }

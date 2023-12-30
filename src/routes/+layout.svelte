@@ -31,8 +31,8 @@
 	<dialog class="w-96 h-max bg-neutral-900 p-5 rounded text-white backdrop:bg-neutral-950/50" bind:this={dialog}>
 		<form method="post" action="?/create">
 			<h1 class="text-xl">Add account</h1>
-			<label for="label">Label</label>
-			<input class="w-full h-9 px-2 rounded bg-neutral-900 border border-neutral-800 outline-none" type="text" name="label" id="label">
+			<label for="label">Name</label>
+			<input class="w-full h-9 px-2 rounded bg-neutral-900 border border-neutral-800 outline-none" type="text" name="name" id="name">
 			<label for="secret">Code</label>
 			<input class="w-full h-9 px-2 rounded bg-neutral-900 border border-neutral-800 outline-none" type="text" name="secret" id="secret">
 			<label for="notes">Notes</label>

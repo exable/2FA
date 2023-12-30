@@ -2,7 +2,7 @@
     import {createEventDispatcher} from "svelte"
     import { onDestroy, onMount } from "svelte";
     const dispatcher = createEventDispatcher()
-    export let id,label, code, notes;
+    export let id,name, code, notes;
 
     let notesView = false;
     /**@type {HTMLDialogElement}*/
@@ -31,7 +31,7 @@
 <div class="h-max bg-neutral-900 rounded border-neutral-800 p-5 w-72 relative">
     <div class="flex justify-between items-center cursor-pointer  z-20" on:click={() => notesView = !notesView}>
         <div>
-            <h1 class="text-2xl">{label}</h1>
+            <h1 class="text-2xl">{name}</h1>
             <button on:click={() => navigator.clipboard.writeText(code.code)} 
                 class="text-blue-600 font-code text-xl focus-visible:border-blue-600 border border-transparent outline-none rounded">
                 {code.code}
@@ -60,7 +60,7 @@
 
         <dialog class="w-96 h-max bg-neutral-900 p-5 rounded text-white backdrop:bg-neutral-950/50" bind:this={deleteDialog}>
             <form method="post" action="?/delete">
-                <h1 class="text-2xl">Delete <span class="underline">{label}</span></h1>
+                <h1 class="text-2xl">Delete <span class="underline">{name}</span></h1>
                 <p class="font-mono">Are you sure you want to delete this item?</p>
                 <input type="hidden" name="id" value={id}>
                 <div class="flex gap-2 mt-5">
@@ -74,8 +74,8 @@
             <form method="post" action="?/edit">
                 <h1 class="text-xl">Edit account</h1>
                 <input type="hidden" name="id" value={id}>
-                <label for="label">Label</label>
-                <input class="w-full h-9 px-2 rounded bg-neutral-900 border border-neutral-800 outline-none" type="text" name="label" id="label" value={label}>
+                <label for="label">Name</label>
+                <input class="w-full h-9 px-2 rounded bg-neutral-900 border border-neutral-800 outline-none" type="text" name="name" id="name" value={name}>
                 <label for="secret">Code</label>
                 <input class="w-full h-9 px-2 rounded bg-neutral-900 border border-neutral-800 outline-none" type="text" name="secret" id="secret">
                 <label for="notes">Notes</label>
