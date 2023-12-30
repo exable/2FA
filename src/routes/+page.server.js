@@ -10,6 +10,7 @@ export const actions = {
         const data = await request.formData();
         const username = data.get('username');
         const password = data.get('password');
+        const remember = data.get('remember');
 
         if (!username || !password) {
             return fail(400, {
@@ -24,7 +25,7 @@ export const actions = {
         }
 
         const sid = await encrypt(username+password,SECRET);
-        cookies.set("sid", sid, {path:'/'})
+        cookies.set("sid", sid, {path:'/', maxAge: remember ? 60 * 60 * 24 * 7 : 1 * 60 * 60});
         return redirect(302, "/")
     },
 

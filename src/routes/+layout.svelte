@@ -3,14 +3,25 @@
     export let data;
 	/**@type {HTMLDialogElement}*/
 	let dialog;
+
+	let remember = false;
 </script>
 {#if !data.user} 
-<form method="POST" action="?/login" class="flex flex-col w-full max-w-72">
+<form method="POST" action="?/login" class="flex flex-col gap-2 w-full max-w-72">
 	<h1 class="text-2xl font-bold">Login</h1>
 	<label for="username">Username</label>
 	<input class="w-full h-9 px-2 rounded bg-neutral-900 border border-neutral-800 outline-none" type="text" name="username" id="username">
 	<label for="password">Password:</label>
 	<input class="w-full h-9 px-2 rounded bg-neutral-900 border border-neutral-800 outline-none" type="password" name="password" id="password">
+	<div class="flex items-center gap-2 w-full">
+		<input type="checkbox" class="hidden" name="remember" id="remember" bind:checked={remember}>
+		<button class={`flex items-center justify-center w-4 h-4 border border-neutral-800 rounded ${remember&&"bg-blue-600"}`} type="button" on:click={() => remember = !remember}>
+			{#if remember}
+			<svg class="w-3 h-3 text-white" viewBox="0 0 24 24"><path fill="currentColor" d="m9 20.42l-6.21-6.21l2.83-2.83L9 14.77l9.88-9.89l2.83 2.83z"/></svg>
+			{/if}
+		</button>
+		<label for="remember">Remember me</label>
+	</div>
 	<button class="p-2 w-max bg-blue-600 rounded mt-2">Log in</button>
 </form>
 {:else}
