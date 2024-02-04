@@ -30,9 +30,9 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="h-max bg-neutral-900 rounded border-neutral-800 p-5 w-72 relative">
     <div class="flex justify-between items-center cursor-pointer  z-20" on:click={() => notesView = !notesView}>
-        <div>
-            <h1 class="text-2xl">{name}</h1>
-            <button on:click={() => navigator.clipboard.writeText(code.code)} 
+        <div class="w-9/12 overflow-hidden">
+            <h1 class="text-2xl text-ellipsis text-nowrap overflow-hidden">{name}</h1>
+            <button on:click|stopPropagation={() => navigator.clipboard.writeText(code.code)} 
                 class="text-blue-600 font-code text-xl focus-visible:border-blue-600 border border-transparent outline-none rounded">
                 {code.code}
             </button>
@@ -93,6 +93,7 @@
 
 <style>
     .pie{
+        z-index: 10;
         width: 50px;
         height: 50px;
         border-radius:50%;
